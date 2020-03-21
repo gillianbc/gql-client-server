@@ -25,7 +25,7 @@ const typeDefs = gql`
 */
 const resolvers = {
     Query: {
-        greeting: () => 'Hello everyone'
+        greeting: () => 'Hello everyone - I am the response from the greeting query'
     }
 }
 

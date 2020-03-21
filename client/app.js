@@ -17,8 +17,18 @@ async function fetchGreeting(){
             }
         )
     })
-    const responseBody = await response.json();
-    console.log(responseBody)
+
+    // const responseBody = await response.json();
+    // Since the response will be {data: {greeting: "Hello everyone"}}, we can destructure
+    // just the data element fand simplify the line above
+    const { data } = await response.json();
+    return data;
 }
 
-fetchGreeting();
+
+// Note the syntax here.  ( {} ) ==> {}  A function that only has one arg can omit the arg 
+// brackets, but not if you're destructuring.  We're destrtucturing the greeting from data
+fetchGreeting().then( ( { greeting } )  => {
+    const title = document.querySelector('h1');
+    title.textContent = greeting;
+});
